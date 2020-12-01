@@ -1,15 +1,22 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto");
 
 //Переменные LESS
-@primary: #0097A7;
-@danger: #FF1744;
-@warning: #EF6C00;
-@success: #00E676;
+@primary: #1BC98E;
+@danger: #E64759;
+@warning: #E4D836;
+@success: #9F86FF;
 
-@theme-btn: #9CCC65;
-@nav: #E53935;
-@nav-height: 70px;
-@nav-link-size: 17px;
+@theme-btn: #a3146c;
+@nav: #15e6e6;
+@nav-height: 60px;
+@nav-link-size: 15px;
+
+@nav1: radial-gradient(circle farthest-corner at 100px 50px, #FBF2EB, #352A3B);
+.border-radius (@radius: 5px) {
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    border-radius: @radius;
+}
 
 .clear(){
 	margin: 0;
@@ -25,36 +32,9 @@
 			color: #fff;
 		}
     }
-    &--@{type} when (@type = warning) {
-		border-color: @@type;
-		&:hover {
-			background: saturate(@@type, 40%);
-			color: @primary - @danger;
-			transform: rotate(-180deg);
-		}
-	}
-	&--@{type} when (@type = danger) {
-		border-color: @@type;
-		&:hover {
-			background: saturate(@@type, 40%);
-			color: @primary - @danger;
-			transform: rotate(-180deg);
-		}
-	}
-	&--@{type} when (@type = success) {
-		border-color: @@type;
-		&:hover {
-			background: darken(@@type, 25%);
-			&--@{type} when (@type = danger) {
-				border-color: @@type;
-				&:hover {
-					background: saturate(@@type, 40%);
-					color: @primary - @danger;
-					transform: rotate(-180deg);
-				}
-			}
-		}
-	}
+	
+	
+    
 }
 
 .tile-styles(@type) {
@@ -78,7 +58,7 @@ a {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	background-color: #fff;
+	background-color: rgb(193, 184, 209);
 	overflow: hidden;
 }
 
@@ -87,9 +67,10 @@ a {
 	align-items: center;
 	justify-content: space-between;
 	height: @nav-height;
-	background-color: @nav;
+	background: @nav1;
 	padding: 0 30px;
-	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .24);
+    box-shadow: 0 2px 5px 0 rgba(151, 120, 192, 0.24);
+    cursor: crosshair;
 
 	&__theme {
 		outline: none;
@@ -97,10 +78,11 @@ a {
 		padding: 8px 20px;
 		background: @theme-btn;
 		border-radius: 7px;
-		cursor: pointer;
+        
 
 		&:active {
-			box-shadow: inset 0 0 20px -3px rgba(0, 0, 0, .6);
+            box-shadow: inset 0 0 20px -3px rgba(0, 0, 0, .6);
+            
 		}
 	}
 
@@ -114,7 +96,8 @@ a {
 		display: flex;
 		align-items: center;
 		height: @nav-height;
-		padding: 0 15px;
+        padding: 0 15px;
+       
 
 		&:hover {
 			background-color: lighten(@nav, 10%);
@@ -123,7 +106,8 @@ a {
 
 	&__link {
 		font-size: @nav-link-size;
-		color: #fff;
+        color: rgb(24, 139, 43);
+        cursor: help;
 
 		&:hover {
 			font-size: @nav-link-size + 2px;
@@ -132,23 +116,26 @@ a {
 }
 
 .main {
-	padding: 40px 0;
+    padding: 40px 0;
+    
 
 	&__content {
 		display: flex;
 		justify-content: space-around;
 		width: 1000px;
-		margin: 0 auto;
+        margin: 0 auto;
+        cursor: wait;
 	}
 
 	&__tile {
 		padding: 20px;
 		width: 18%;
-		box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+		box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.502);
 		.tile-styles(danger);
 		.tile-styles(success);
 		.tile-styles(warning);
-		.tile-styles(primary);
+        .tile-styles(primary);
+        .border-radius(40px);
 	}
 
 	&__header {
@@ -161,32 +148,37 @@ a {
 	&__features {
 		list-style: none;
 		margin: 0 0 40px 0;
-		padding: 0 0 0 20px;
+        padding: 0 0 0 20px;
+        
 	}
 
 	&__item {
 		display: flex;
 		justify-content: space-between;
 		margin-bottom: 10px;
-		font-size: 16px;
+        font-size: 16px;
+        
 	}
 
 	&__footer {
-		text-align: center;
+        text-align: center;
+        
+        
 	}
 
 	&__button {
 		outline: 0;
 		padding: 8px 20px;
-		cursor: pointer;
 		text-align: center;
 		border: 1px solid transparent;
-		border-radius: 3px;
+		border-radius: 15px;
 		font-size: 15px;
-		background: transparent;
-		.button-styles(danger);
+		background: linear-gradient(45deg, #EECFBA, #C5DDE8);
+		.button-styles(danger); 
 		.button-styles(success);
 		.button-styles(primary);
-		.button-styles(warning);
+        .button-styles(warning);
+        
 	}
 }
+

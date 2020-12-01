@@ -1,15 +1,15 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto");
 
 //Переменные LESS
-@primary: #1BC98E;
-@danger: #E64759;
-@warning: #E4D836;
-@success: #9F86FF;
+@primary: #0097A7;
+@danger: #FF1744;
+@warning: #EF6C00;
+@success: #00E676;
 
-@theme-btn: #FFE082;
-@nav: #1976D2;
-@nav-height: 60px;
-@nav-link-size: 15px;
+@theme-btn: #9CCC65;
+@nav: #E53935;
+@nav-height: 70px;
+@nav-link-size: 17px;
 
 .clear(){
 	margin: 0;
@@ -19,40 +19,49 @@
 .button-styles(@type){
 	// .main__button--danger
 	&--@{type} {
-		border-color: @@type;
+		border-color: darken(@@type, 25%);
 		&:hover {
-			background: @@type;
-			color: #fff;
+			background: darken(@@type,25%);
+			color: darken(#fff, 25%);
+		}
+    }
+    &--@{type} when (@type = warning) {
+		border-color: darken(@@type, 25%);
+		&:hover {
+			background: saturate(@@type, 40%);
+			color: @primary - @danger;
+			transform: rotate(-180deg);
 		}
 	}
-
-&--@{type} when ((@type = warning) or (@type = danger)) {
-	border-color: @@type;
-	&:hover {
-		background: saturate(@@type, 40%);
-		color: @primary - @danger;
-		transform: rotate(-180deg);
+	&--@{type} when (@type = danger) {
+		border-color: darken(@@type, 25%);
+		&:hover {
+			background: saturate(@@type, 40%);
+			color: @primary - @danger;
+			transform: rotate(-180deg);
+		}
 	}
-}
-	
-&--@{type} when (@type = success) {
-	border-color: @@type;
-	&:hover {
-		background: darken(@@type, 25%);
-		color: mix(@primary, @danger, 50%);
-		font-size: 150%;
+	&--@{type} when (@type = success) {
+		border-color: darken(@@type,25%);
+		&:hover {
+			background: darken(@@type, 25%);
+			&--@{type} when (@type = danger) {
+				border-color: darken(@@type,25%);
+				&:hover {
+					background: saturate(@@type, 40%);
+					color: @primary - @danger;
+					transform: rotate(-180deg);
+				}
+			}
+		}
 	}
-}
-
-
-	
 }
 
 .tile-styles(@type) {
 	// .main__tile--danger
 	&--@{type} {
 		& .main__header, & .main__plus {
-			color: @@type;
+			color: darken(@@type,25%);
 		}
 	}
 }
@@ -69,7 +78,7 @@ a {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	background-color: #fff;
+	background-color: darken(#fff,25%);
 	overflow: hidden;
 }
 
@@ -78,7 +87,7 @@ a {
 	align-items: center;
 	justify-content: space-between;
 	height: @nav-height;
-	background-color: @nav;
+	background-color: darken(@nav,25%);
 	padding: 0 30px;
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .24);
 
@@ -86,7 +95,7 @@ a {
 		outline: none;
 		border: none;
 		padding: 8px 20px;
-		background: @theme-btn;
+		background: darken(@theme-btn,25%);
 		border-radius: 7px;
 		cursor: pointer;
 
@@ -114,7 +123,7 @@ a {
 
 	&__link {
 		font-size: @nav-link-size;
-		color: #fff;
+		color: darken(#fff,25%);
 
 		&:hover {
 			font-size: @nav-link-size + 2px;
